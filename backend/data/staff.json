@@ -1,0 +1,13 @@
+[
+  {"id": "S001", "name": "Dr. Thabo Nkosi", "job_title": "Cardiologist", "profession": "Doctor", "unavailable_dates": []},
+  {"id": "S002", "name": "Dr. Sarah Combrink", "job_title": "General Practitioner", "profession": "Doctor", "unavailable_dates": []},
+  {"id": "S003", "name": "Dr. Amina Patel", "job_title": "Pediatrician", "profession": "Doctor", "unavailable_dates": ["2026-08-22"]},
+  {"id": "S004", "name": "Dr. Johan van der Merwe", "job_title": "General Practitioner", "profession": "Doctor", "unavailable_dates": []},
+
+  {"id": "S005", "name": "Palesa Mokoena", "job_title": "Registered Nurse - ICU", "profession": "Nurse", "unavailable_dates": []},
+  {"id": "S006", "name": "James Botha", "job_title": "Registered Nurse - ICU", "profession": "Nurse", "unavailable_dates": ["2026-08-20"]},
+  {"id": "S007", "name": "Lindiwe Zulu", "job_title": "Registered Nurse - ICU", "profession": "Nurse", "unavailable_dates": []},
+  {"id": "S008", "name": "Nomvula Dlamini", "job_title": "Midwife", "profession": "Nurse", "unavailable_dates": []},
+  {"id": "S009", "name": "Aisha Adams", "job_title": "Midwife", "profession": "Nurse", "unavailable_dates": []},
+  {"id": "S010", "name": "Kagiso Molefe", "job_title": "Theatre Nurse (Scrub Nurse)", "profession": "Nurse", "unavailable_dates": []}
+]

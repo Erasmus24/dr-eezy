@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medics Online — Doctor & Nurse Recruitment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; margin: 0; color: #1a1a1a; }
+  header { background: #1f4e79; color: #fff; padding: 18px 40px; display: flex; justify-content: space-between; align-items: center; }
+  header .logo { font-size: 22px; font-weight: bold; }
+  header nav a { color: #fff; margin-left: 24px; text-decoration: none; font-size: 14px; }
+  .hero { background: #eaf1f8; padding: 60px 40px; text-align: center; }
+  .hero h1 { font-size: 34px; margin-bottom: 10px; }
+  .hero p { font-size: 16px; color: #444; max-width: 600px; margin: 0 auto; }
+  .jobs { padding: 40px; max-width: 960px; margin: 0 auto; }
+  .jobs h2 { border-bottom: 2px solid #1f4e79; padding-bottom: 8px; }
+  .job-card { border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 12px; }
+  .job-card h3 { margin: 0 0 4px 0; color: #1f4e79; }
+  .job-card .meta { font-size: 13px; color: #666; margin-bottom: 6px; }
+  .badge { display: inline-block; background: #548235; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 10px; margin-right: 6px; }
+  .badge.doctor { background: #1f4e79; }
+  footer { text-align: center; padding: 24px; color: #888; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🩺 Medics Online</div>
+  <nav>
+    <a href="#jobs">Find a Job</a>
+    <a href="#">Upload CV</a>
+    <a href="#">For Employers</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <h1>Connecting great Doctors and Nurses with the right roles</h1>
+  <p>Upload your CV and let Dr. Eezy — our AI assistant — match you to open positions,
+     answer your questions, and help hospital admins build fair staff rosters.</p>
+</div>
+
+<div class="jobs" id="jobs">
+  <h2>Open Positions</h2>
+  <div id="job-list">Loading jobs…</div>
+</div>
+
+<footer>&copy; 2026 Medics Online — Demo page for the Dr. Eezy AI.</footer>
+
+<script>
+  // In production this would call your real Medics Online API; for the demo it
+  // reads straight from the Dr. Eezy backend's /jobs endpoint.
+  var API_BASE = "http://localhost:8000";
+
+  fetch(API_BASE + "/jobs")
+    .then(function (r) { return r.json(); })
+    .then(function (jobs) {
+      var list = document.getElementById("job-list");
+      list.innerHTML = "";
+      jobs.forEach(function (job) {
+        var card = document.createElement("div");
+        card.className = "job-card";
+        var badgeClass = job.profession === "Doctor" ? "badge doctor" : "badge";
+        card.innerHTML =
+          "<h3>" + job.title + "</h3>" +
+          "<div class='meta'>" +
+            "<span class='" + badgeClass + "'>" + job.profession + "</span>" +
+            job.location + " · " + job.employment_type + " · " + job.shift_type +
+          "</div>" +
+          "<div>" + job.description + "</div>";
+        list.appendChild(card);
+      });
+    })
+    .catch(function () {
+      document.getElementById("job-list").textContent =
+        "Could not load jobs — make sure the Dr. Eezy backend is running at " + API_BASE + ".";
+    });
+</script>
+
+<!-- Dr. Eezy chat widget — this is the ONLY line needed to embed it on any page. -->
+<script src="dr-eezy-widget.js" data-api-base="http://localhost:8000"></script>
+
+</body>
+</html>
